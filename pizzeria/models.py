@@ -5,18 +5,25 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Pizza(models.Model):
-    text = models.TextField('pizza_name')
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    pizza_name = models.CharField(max_length=200)
 
     def __str__(self):
         return self.text
 
 class Topping(models.Model):
     pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
-    text = models.TextField('topping_name')
+    topping_name = models.CharField(max_length=200)
 
     class Meta:
         verbose_name_plural = 'toppings'
+
+    def __str__(self):
+        return f"{self.text [:50]}..." 
+
+
+class Comment(models.Model):
+    pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
+    comment = models.TextField(max_length=200)
 
     def __str__(self):
         return f"{self.text [:50]}..." 

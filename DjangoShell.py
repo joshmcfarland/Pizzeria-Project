@@ -16,7 +16,7 @@ p = Pizza.objects.get(id=1)
 print(p.text)
 
 
-toppings = p.topping_.all()
+toppings = p.topping_set.all()
 
 for t in toppings:
     print(t)
