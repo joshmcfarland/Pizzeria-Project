@@ -1,0 +1,12 @@
+{% extends "pizzeria/base.html" %}
+
+{% block content %}
+
+<form action="{% url 'pizzeria:new_comment' pizza.id %}" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+
+    <input type="hidden" name="next" value="{% url 'pizzeria:index' }" />
+</form>
+
+{% endblock content %}

@@ -8,7 +8,7 @@ class Pizza(models.Model):
     pizza_name = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.text
+        return self.pizza_name
 
 class Topping(models.Model):
     pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
@@ -18,12 +18,14 @@ class Topping(models.Model):
         verbose_name_plural = 'toppings'
 
     def __str__(self):
-        return f"{self.text [:50]}..." 
+        return f"{self.topping_name [:50]}" 
 
 
 class Comment(models.Model):
     pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
     comment = models.TextField(max_length=200)
+    date_added = models.DateTimeField(auto_now_add=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.text [:50]}..." 
+        return f"{self.comment [:50]}" 
