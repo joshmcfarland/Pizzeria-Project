@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from pizzeria.models import Pizza, Topping, Comment
-from pizzeria.forms import CommentForm
+from .forms import CommentForm
 
 # Create your views here.
 def index(request):
@@ -21,7 +21,7 @@ def pizza(request, pizza_id):
 
     comment = pizza.comment_set.order_by('date_added')
 
-    context = {'pizza':pizza,'toppings':toppings}
+    context = {'pizza':pizza,'toppings':toppings, 'comment':comment}
 
     return render(request, 'pizzeria/pizza.html', context)
 

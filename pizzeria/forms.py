@@ -1,6 +1,6 @@
 from django import forms
 
-from pizzeria.models import Pizza, Topping, Comment
+from .models import Pizza, Topping, Comment
 
 class CommentForm(forms.ModelForm):
     class Meta:
