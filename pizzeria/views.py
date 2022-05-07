@@ -19,7 +19,7 @@ def pizza(request, pizza_id):
 
     toppings = pizza.topping_set.order_by('topping_name')
 
-    comments = pizza.comment_set.order_by('date_added')
+    comments = pizza.comment_set
 
     context = {'pizza':pizza,'toppings':toppings, 'comments':comments}
 
