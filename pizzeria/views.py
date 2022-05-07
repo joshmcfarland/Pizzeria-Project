@@ -19,9 +19,9 @@ def pizza(request, pizza_id):
 
     toppings = pizza.topping_set.order_by('topping_name')
 
-    comment = pizza.comment_set.order_by('date_added')
+    comments = pizza.comment_set.order_by('date_added')
 
-    context = {'pizza':pizza,'toppings':toppings, 'comment':comment}
+    context = {'pizza':pizza,'toppings':toppings, 'comments':comments}
 
     return render(request, 'pizzeria/pizza.html', context)
 
@@ -39,7 +39,7 @@ def comment(request, pizza_id):
             comment.pizza = pizza
             comment.owner = request.user
             comment.save()
-            return redirect("pizza", pizza_id=pizza_id)
+            return redirect("pizzeria:pizza", pizza_id=pizza_id)
 
     context = {"form": form, "pizza": pizza}
 

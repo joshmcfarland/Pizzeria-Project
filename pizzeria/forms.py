@@ -5,6 +5,6 @@ from .models import Pizza, Topping, Comment
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ['text']
-        labels = {'text': ''}
-        widgets = {'text': forms.Textarea(attrs={'cols':80})}
+        fields = ['comment']
+        labels = {'comment': ''}
+        widgets = {'comment': forms.Textarea(attrs={'cols':80})}

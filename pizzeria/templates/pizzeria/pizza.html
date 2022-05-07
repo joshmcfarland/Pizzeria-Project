@@ -3,16 +3,19 @@
 
 {% block content %}
 <p>
-    Pizza: {{ pizzas }}
+    Toppings:
 </p>
 
 <ul>
     {% for t in toppings %}
+
     <li>
-        <p> {{ t }}</p>
+        <p>{{ t.toppings_name }}</p>
     </li>
     {% empty %}
-    <li> There are no toppings for this pizza yet.</li>
+    <li>
+        There are no toppings for this pizza.
+    </li>
     {% endfor %}
 </ul>
 
@@ -20,14 +23,20 @@
 
 <ul>
     {% for c in comments %}
+
     <li>
-        <p> {{ c }}</p>
+        <p>{{c.text}}</p>
+        <p>{{c.date_added}} by {{c.owner}}</p>
     </li>
+
     {% empty %}
-    <li> There are no comments for this pizza yet.</li>
+    <li>
+        There are no comments for this pizza.
+    </li>
     {% endfor %}
+
 </ul>
 
-<p><a href="{% url 'comment' pizza.id %}">Add New Comment</a></p>
+<p><a href="{% url 'new_comment' pizza.id %}">Add New Comment</a></p>
 
 {% endblock content %}
